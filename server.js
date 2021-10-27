@@ -1,20 +1,30 @@
 // import modules
 
 import express from 'express'
+import path from 'path'
+import { fileURLToPath } from 'url'
 import * as skillsDB from './data/skills-db.js'
-import indexRouter from './routes/index.js'
+
+// import routes
+import { router as indexRouter } from './routes/index.js'
+import { router as skillsRouter} from './routes/skills.js'
+
 
 // Create Express app
 
 const app = express()
 
-// Configure the app (app.set)
-
-
+// view engine setup
+app.set(
+  'views',
+  path.join(path.dirname(fileURLToPath(import.meta.url)), 'views')
+)
+app.set('view engine', 'ejs')
 
 // Mount Middleware (app.use)
 
 app.use('/', indexRouter)
+app.use('/skills', skillsRouter)
 
 
 // Mount routes

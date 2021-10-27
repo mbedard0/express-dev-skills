@@ -11,7 +11,7 @@ const find = (conditions, callback) => {
     if (!(conditions instanceof Object)){
       throw new TypeError('Please pass in an object')
     }
-    if (Object.keys(conditions).length === 0) return callback(null, todos)
+    if (Object.keys(conditions).length === 0) return callback(null, skills)
   } catch (error) {
     console.log(error)
     callback(error, [])
@@ -29,18 +29,18 @@ const findById = (id, callback) =>{
   }
 }
 
-function create(todo, callback) {
+function create(skill, callback) {
   skills.done = false
-  skills.push(todo)
-  return callback(null, todo)
+  skills.push(skill)
+  return callback(null, skill)
 }
 
 function findByIdAndDelete(id, callback) {
   try { 
     const idx = skills.findIndex(skill => skill._id == parseInt(id))
-    const deletedTodo = skills.splice(idx, 1)
-    if (!deletedTodo.length ) throw new Error ('No todo was deleted')
-    return callback(null, deletedTodo[0])
+    const deletedSkill = skills.splice(idx, 1)
+    if (!deletedSkill.length ) throw new Error ('No skill was deleted')
+    return callback(null, deletedSkill[0])
   } catch(error) {
     return callback(error, null)
   }

@@ -7,7 +7,14 @@
   <title>Dev Skills</title>
 </head>
 <body>
-  <h1>Dev Skills</h1>
-  <a href="/skills">Dev skills list</a>
+  <h1>Skills List</h1>
+  <% if(error) { %>
+    <h2><%= error %> </h2> 
+  <% } %>
+  <ul>
+    <% skills.forEach(function(skill) { %>
+      <li><a href="/skills/<%= skill._id %>"><%= skill.language %></a></li>
+    <% }) %> 
+  </ul> 
 </body>
 </html>

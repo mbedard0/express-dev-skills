@@ -1,5 +1,9 @@
-import { Router } from "express";
-import * as skillsCtrl from '../controllers/skills'
-
+import { Router } from "express"
+import * as indexCtrl from '../controllers/index.js'
+const router = Router()
 
 router.get('/', indexCtrl.index)
+
+export {
+  router
+}
