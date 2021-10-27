@@ -1,6 +1,5 @@
 import * as skillsDB from '../data/skills-db.js'
 
-
 function index(req, res) {
   skillsDB.find({}, function(error, skills) {
     res.render('skills/index', {
@@ -19,7 +18,19 @@ function show(req, res) {
   })
 }
 
+function newSkill(req, res) {
+  res.render('skills/new')
+}
+
+function create(req, res) {
+  skillsDB.create(req.body, function(error, skill) {
+    res.redirect('skills');
+  })
+}
+
 export {
   index,
-  show
+  show,
+  newSkill as new,
+  create
 }

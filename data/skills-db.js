@@ -1,9 +1,9 @@
 const skills = [
-  {language: 'JavaScript', learned: true, _id:1},
-  {language: 'Python', learned: false, _id:2},
-  {language: 'Java', learned: false, _id:3},
-  {language: 'C++', learned: false, _id:4},
-  {language: 'Ruby', learned: false, _id:5}
+  {language: 'JavaScript', learned: 'yes', _id:1},
+  {language: 'Python', learned: '', _id:2},
+  {language: 'Java', learned: '', _id:3},
+  {language: 'C++', learned: '', _id:4},
+  {language: 'Ruby', learned: '', _id:5}
 ]
 
 const find = (conditions, callback) => {
@@ -30,7 +30,8 @@ const findById = (id, callback) =>{
 }
 
 function create(skill, callback) {
-  skills.done = false
+  skill._id = Date.now() % 1000000
+  skills.learned = false
   skills.push(skill)
   return callback(null, skill)
 }

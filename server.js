@@ -22,13 +22,12 @@ app.set(
 app.set('view engine', 'ejs')
 
 // Mount Middleware (app.use)
+app.use(express.urlencoded({ extended: false }))
 
+
+// mounted routers
 app.use('/', indexRouter)
 app.use('/skills', skillsRouter)
-
-
-// Mount routes
-
 
 
 // Tell the app to listen on port 3000
