@@ -4,6 +4,7 @@ import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import * as skillsDB from './data/skills-db.js'
+import methodOverride from 'method-override'
 
 // import routes
 import { router as indexRouter } from './routes/index.js'
@@ -23,7 +24,12 @@ app.set('view engine', 'ejs')
 
 // Mount Middleware (app.use)
 app.use(express.urlencoded({ extended: false }))
-
+app.use(methodOverride('_method'))
+app.use(
+  express.static(
+    path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
+  )
+)
 
 // mounted routers
 app.use('/', indexRouter)
