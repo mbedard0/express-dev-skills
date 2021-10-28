@@ -15,6 +15,9 @@
     <h3><%= skill.language %></h3>
     <p>Skill learned? <%= skill.learned ? 'Yes' : 'No' %></p>
   <% } %>
+  <form action="/skills/<%= skill._id %>?_method=DELETE" class="delete-form" method="POST">
+    <button type="submit">X</button>
+  </form>
 	<a href="/skills">Go back</a>
 </body>
 <%- include('../partials/footer.ejs') %> 
